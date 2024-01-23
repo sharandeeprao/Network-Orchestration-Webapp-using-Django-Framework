@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Update</title>
+    <style>
+        /* Style the button */
+        .btn {
+            margin-left: 10px; /* Add space between buttons */
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventory Update</h1>
+    <p>This is a simple inventory update form. You can use this form to update your inventory.</p>
+
+    <form method="post">
+        <label for="updateText">Enter Inventory Update:</label>
+        {% csrf_token %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>DeviceName</th>
+                    <th>IPaddress</th>
+                    <!-- Add more column headers as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.Hostname }}</td>
+                    <td>{{ item.IPaddress }}</td>
+                    <!-- Render other fields as needed -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" value="Update the Inventory">
+        <a href="/getdata/" class="btn">GetInformation</a>
+    </form>
+</body>
+</html>

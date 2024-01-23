@@ -1,0 +1,10 @@
+- gather_facts: false
+  hosts: hosts
+  name: Get 'show ip interface brief' output from a router
+  tasks:
+  - name: Run 'show ip interface brief' command on the router
+    raw: sh ver
+    register: ip_int_br_output
+  - debug:
+      var: ip_int_br_output.stdout_lines
+    name: Display the output on the command line

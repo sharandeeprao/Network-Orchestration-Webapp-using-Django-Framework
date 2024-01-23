@@ -1,0 +1,15 @@
+---
+- name: Add Host Key to Known Hosts
+  hosts: hosts  # Specify the host or group of hosts
+  tasks:
+    - name: Fetch the Host Key
+      shell: ssh-keyscan {{ inventory_hostname }}
+      register: host_key_output
+      changed_when: false
+
+    - name: Add host key to known_hosts
+      known_hosts:
+        path: ~/.ssh/known_hosts
+        name: "{{ inventory_hostname }}"
+        key: "{{ host_key_output.stdout_lines }}"
+        state: present

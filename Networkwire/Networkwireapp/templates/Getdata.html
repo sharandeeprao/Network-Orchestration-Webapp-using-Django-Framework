@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Information</title>
+</head>
+<body>
+    <h1>Get Information</h1>
+    <p>This is a simple inventory update form. You can use this form to update your inventory.</p>
+
+    <form method="post">
+        <label for="updateText">Enter Inventory Update:</label>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Get the data">
+        
+    
+</body>
+</html>
